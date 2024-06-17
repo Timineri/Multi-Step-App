@@ -22,7 +22,7 @@ function Side({ Item }) {
       <Numbers>{Item.id}</Numbers>
       <div>
         <Paragraph>STEP {Item.id}</Paragraph>
-        <h3>{Item.description}</h3>
+        <h4>{Item.description}</h4>
       </div>
     </SideItem>
   );

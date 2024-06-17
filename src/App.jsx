@@ -12,8 +12,9 @@ export default function App() {
       <Parent>
         <SideBar />
         {/* <Form /> */}
-        {/* <Addons /> */}
-        <Plan />
+        {/* <Plan /> */}
+        <Addons />
+
         <GlobalStyles />
       </Parent>
     </Main>
