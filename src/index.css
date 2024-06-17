@@ -3,3 +3,10 @@
   background-repeat: no-repeat;
   background-size: auto;
 }
+
+input[type="checkbox"] {
+  height: 1.2rem;
+  width: 1.2rem;
+  accent-color: hsl(243, 100%, 62%);
+  margin-right: 1em;
+}
