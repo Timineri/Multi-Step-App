@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import "../index.css";
 const SideItems = [
   { id: 1, description: "YOUR INFO" },
   { id: 2, description: "SELECT PAN" },
@@ -6,20 +7,20 @@ const SideItems = [
   { id: 4, description: "SUMMARY" },
 ];
 
-export default function SideBar() {
+export default function SideBar({ step }) {
   return (
     <SideContent className="side-content">
       {SideItems.map((Item) => (
-        <Side key={Item.id} Item={Item} />
+        <Side key={Item.id} Item={Item} step={step} />
       ))}
     </SideContent>
   );
 }
 
-function Side({ Item }) {
+function Side({ Item, step }) {
   return (
     <SideItem>
-      <Numbers>{Item.id}</Numbers>
+      <Numbers className={`${step > 1 ? "active" : " "}`}>{Item.id}</Numbers>
       <div>
         <Paragraph>STEP {Item.id}</Paragraph>
         <h4>{Item.description}</h4>

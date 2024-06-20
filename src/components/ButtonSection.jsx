@@ -1,9 +1,9 @@
 import styled from "styled-components";
-export default function ButtonSection() {
+export default function ButtonSection({ onNext, onBack }) {
   return (
     <Buttons>
-      <ButtonOne>Go back</ButtonOne>
-      <ButtonTwo>Next Step</ButtonTwo>
+      <ButtonOne onClick={onBack}>Go back</ButtonOne>
+      <ButtonTwo onClick={onNext}>Next Step</ButtonTwo>
     </Buttons>
   );
 }

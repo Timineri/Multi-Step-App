@@ -1,11 +1,10 @@
 import styled from "styled-components";
-import ButtonSection from "./ButtonSection";
 import Header from "./Header";
 import Paragraph from "./Paragraph";
 
 export default function Form() {
   return (
-    <Section>
+    <>
       <TopText>
         <Header>Personal Info</Header>
         <Paragraph>
@@ -26,15 +25,9 @@ export default function Form() {
         </FormItem>
         <Input type="text" placeholder="e.g. +1 234 567 890" />
       </FormSection>
-      <ButtonSection />
-    </Section>
+    </>
   );
 }
-
-const Section = styled.div`
-  justify-content: center;
-  margin: 4em 7em 0 0;
-`;
 
 const TopText = styled.div`
   padding-bottom: 2em;

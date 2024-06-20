@@ -10,3 +10,7 @@ input[type="checkbox"] {
   accent-color: hsl(243, 100%, 62%);
   margin-right: 1em;
 }
+
+.active {
+  background-color: hsl(228, 100%, 84%);
+}

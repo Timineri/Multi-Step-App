@@ -5,6 +5,7 @@ import ButtonSection from "./ButtonSection";
 import arcadeIcon from "../icons/icon-arcade.svg";
 import advancedIcon from "../icons/icon-advanced.svg";
 import proIcon from "../icons/icon-pro.svg";
+
 const PlanItems = [
   {
     id: 1,
@@ -31,7 +32,7 @@ const PlanItems = [
 
 export default function Plan() {
   return (
-    <Section>
+    <>
       <TopText>
         <Header>Select your plan</Header>
         <Paragraph>You have the option of monthly or yearly billing.</Paragraph>
@@ -47,8 +48,7 @@ export default function Plan() {
           <Yearly>Yearly</Yearly>
         </Option>
       </PlanSections>
-      <ButtonSection />
-    </Section>
+    </>
   );
 }
 
@@ -63,10 +63,6 @@ function Plans({ Item }) {
   );
 }
 
-const Section = styled.div`
-  justify-content: center;
-  margin: 4em 7em 0 0;
-`;
 const TopText = styled.div`
   padding-bottom: 2em;
 `;
