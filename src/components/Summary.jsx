@@ -8,15 +8,17 @@ const SummaryItems = [
     id: 1,
     description: "Online service",
     price: "+$1/mo",
+    yearlyPrice: "+$10/yr",
   },
   {
     id: 2,
     description: "Larger storage",
     price: "+$2/mo",
+    yearlyPrice: "+$20/yr",
   },
 ];
 
-export default function Summary() {
+export default function Summary({ toggled }) {
   return (
     <>
       <TopText>
@@ -30,34 +32,53 @@ export default function Summary() {
           <Duration>
             <DurationText>
               <div>
-                <h3>Arcade (Monthly)</h3>
+                <h3>{toggled ? "Arcade (Yearly)" : "Arcade (Monthly)"}</h3>
                 <Link href="">Change</Link>
               </div>
-              <p>$9/mo</p>
+              <p style={toggled ? { display: "none" } : { display: "block" }}>
+                $9/mo
+              </p>
+              <p style={toggled ? { display: "block" } : { display: "none" }}>
+                $90/yr
+              </p>
             </DurationText>
           </Duration>
           <div>
             {SummaryItems.map((Item) => (
-              <Sum key={Item.id} Item={Item} />
+              <Sum key={Item.id} Item={Item} toggled={toggled} />
             ))}
           </div>
         </SummaryMain>
         <Total>
           <TotalText>
-            <h4>Total (per month)</h4>
+            <h4>{toggled ? "Total (per year)" : "Total (per month)"}</h4>
           </TotalText>
-          <TotalPrice>+$12/mo</TotalPrice>
+          <TotalPrice
+            style={toggled ? { display: "none" } : { display: "block" }}
+          >
+            +$12/mo
+          </TotalPrice>
+          <TotalPrice
+            style={toggled ? { display: "block" } : { display: "none" }}
+          >
+            +$120/yr
+          </TotalPrice>
         </Total>
       </SummarySection>
     </>
   );
 }
 
-function Sum({ Item }) {
+function Sum({ Item, toggled }) {
   return (
     <Storage>
       <p>{Item.description}</p>
-      <Price>{Item.price}</Price>
+      <Price style={toggled ? { display: "none" } : { display: "block" }}>
+        {Item.price}
+      </Price>
+      <Price style={toggled ? { display: "block" } : { display: "none" }}>
+        {Item.yearlyPrice}
+      </Price>
     </Storage>
   );
 }

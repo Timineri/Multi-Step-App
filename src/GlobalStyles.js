@@ -49,7 +49,7 @@ input, button, textarea, select {
   font: inherit;
 }
 
-input:focus, button:focus, textarea:focus, select:focus{
+input:focus, textarea:focus, select:focus{
   color: hsl(213, 96%, 18%);
   font-weight: 700;
   border: 1px solid hsl(243, 100%, 62%);

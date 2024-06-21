@@ -1,13 +1,11 @@
 import styled from "styled-components";
 import checkmark from "../icons/icon-checkmark.svg";
 
-const Pic = [{ img: checkmark }];
-
 export default function ThankYou() {
   return (
-    <>
+    <Main>
       <div>
-        <img src={Pic.img} alt="checkmark" />
+        <img src={checkmark} alt="checkmark" />
         <Thank>Thank you!</Thank>
         <Paragraph>
           Thanks for confirming your subcription! We hope you have fun using our
@@ -15,9 +13,18 @@ export default function ThankYou() {
           support@loremgaming.com.
         </Paragraph>
       </div>
-    </>
+    </Main>
   );
 }
+
+const Main = styled.div`
+  height: 60vh;
+
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 const Thank = styled.h1`
   color: hsl(213, 96%, 18%);

@@ -10,9 +10,20 @@ import Addons from "./components/Addons";
 import Summary from "./components/Summary";
 import ThankYou from "./components/ThankYou";
 
-const pages = [<Form />, <Plan />, <Addons />, <Summary />, <ThankYou />];
-
 export default function App() {
+  const [toggled, setToggled] = useState(false);
+
+  function handleToggle() {
+    setToggled(!toggled);
+  }
+  const pages = [
+    <Form key={1} />,
+    <Plan key={2} toggled={toggled} onToggled={handleToggle} />,
+    <Addons key={3} toggled={toggled} />,
+    <Summary key={4} toggled={toggled} />,
+    <ThankYou key={5} />,
+  ];
+
   const [step, setStep] = useState(1);
 
   function handleBack() {
@@ -28,9 +39,14 @@ export default function App() {
         <SideBar step={step} />
         <Section>
           {pages[step - 1]}
-          <ButtonSection step={step} onNext={handleNext} onBack={handleBack} />
+          {step < 5 && (
+            <ButtonSection
+              step={step}
+              onNext={handleNext}
+              onBack={handleBack}
+            />
+          )}
         </Section>
-
         <GlobalStyles />
       </Parent>
     </Main>

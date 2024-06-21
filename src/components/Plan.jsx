@@ -5,6 +5,7 @@ import ButtonSection from "./ButtonSection";
 import arcadeIcon from "../icons/icon-arcade.svg";
 import advancedIcon from "../icons/icon-advanced.svg";
 import proIcon from "../icons/icon-pro.svg";
+import { useState } from "react";
 
 const PlanItems = [
   {
@@ -12,6 +13,7 @@ const PlanItems = [
     img: arcadeIcon,
     description: "Arcade",
     price: "$9/mo",
+    yearlyprice: "$90/yr",
     bonus: "2 months free",
   },
   {
@@ -19,6 +21,7 @@ const PlanItems = [
     img: advancedIcon,
     description: "Advanced",
     price: "$12/mo",
+    yearlyprice: "$120/yr",
     bonus: "2 months free",
   },
   {
@@ -26,11 +29,12 @@ const PlanItems = [
     img: proIcon,
     description: "Pro",
     price: "$15/mo",
+    yearlyprice: "$150/yr",
     bonus: "2 months free",
   },
 ];
 
-export default function Plan() {
+export default function Plan({ toggled, onToggled }) {
   return (
     <>
       <TopText>
@@ -40,11 +44,15 @@ export default function Plan() {
       <PlanSections>
         <PlanSection>
           {PlanItems.map((Item) => (
-            <Plans key={Item.id} Item={Item} />
+            <Plans key={Item.id} Item={Item} toggled={toggled} />
           ))}
         </PlanSection>
         <Option>
           <Monthly>Monthly</Monthly>
+          <label className="switch">
+            <input type="checkbox" value={toggled} onChange={onToggled} />
+            <span className="slider round"></span>
+          </label>
           <Yearly>Yearly</Yearly>
         </Option>
       </PlanSections>
@@ -52,13 +60,18 @@ export default function Plan() {
   );
 }
 
-function Plans({ Item }) {
+function Plans({ Item, toggled }) {
   return (
-    <PlanChild>
+    <PlanChild tabIndex={Item.id}>
       <Img src={Item.img} alt="" />
       <Level>{Item.description}</Level>
-      <Time>{Item.price}</Time>
-      {/* <Bonuses>{Item.bonus}</Bonuses> */}
+      <Time style={toggled ? { display: "none" } : { display: "block" }}>
+        {Item.price}
+      </Time>
+      <div style={toggled ? { display: "block" } : { display: "none" }}>
+        <Time>{Item.yearlyprice}</Time>
+        <Bonuses>{Item.bonus}</Bonuses>
+      </div>
     </PlanChild>
   );
 }
@@ -74,6 +87,10 @@ const PlanChild = styled.div`
   border: 1px solid hsl(229, 24%, 87%);
   border-radius: 0.5em;
   height: max-content;
+  &:focus {
+    border: 1px solid hsl(243, 100%, 62%);
+    background-color: hsl(217, 100%, 97%);
+  }
   &:hover {
     border: 1px solid hsl(243, 100%, 62%);
     background-color: hsl(231, 100%, 99%);
@@ -100,10 +117,10 @@ const Time = styled.div`
   color: hsl(231, 11%, 63%);
 `;
 
-// const Bonuses = styled.p`
-//   color: hsl(213, 96%, 18%);
-//   font-weight: 400;
-// `;
+const Bonuses = styled.p`
+  color: hsl(213, 96%, 18%);
+  font-weight: 400;
+`;
 
 const Option = styled.div`
   background-color: hsl(231, 100%, 99%);
@@ -114,7 +131,7 @@ const Option = styled.div`
 
 const Monthly = styled.span`
   color: hsl(231, 11%, 63%);
-
+  margin-right: 1em;
   font-weight: 700;
   &:hover {
     color: hsl(213, 96%, 18%);

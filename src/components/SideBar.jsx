@@ -2,7 +2,7 @@ import styled from "styled-components";
 import "../index.css";
 const SideItems = [
   { id: 1, description: "YOUR INFO" },
-  { id: 2, description: "SELECT PAN" },
+  { id: 2, description: "SELECT PLAN" },
   { id: 3, description: "ADD-ONS" },
   { id: 4, description: "SUMMARY" },
 ];
@@ -20,7 +20,7 @@ export default function SideBar({ step }) {
 function Side({ Item, step }) {
   return (
     <SideItem>
-      <Numbers className={`${step > 1 ? "active" : " "}`}>{Item.id}</Numbers>
+      <Numbers className={Item.id === step ? "active" : " "}>{Item.id}</Numbers>
       <div>
         <Paragraph>STEP {Item.id}</Paragraph>
         <h4>{Item.description}</h4>
