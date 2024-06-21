@@ -1,11 +1,9 @@
 import styled from "styled-components";
 import Header from "./Header";
 import Paragraph from "./Paragraph";
-import ButtonSection from "./ButtonSection";
 import arcadeIcon from "../icons/icon-arcade.svg";
 import advancedIcon from "../icons/icon-advanced.svg";
 import proIcon from "../icons/icon-pro.svg";
-import { useState } from "react";
 
 const PlanItems = [
   {

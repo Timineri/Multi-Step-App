@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Header from "./Header";
 import Paragraph from "./Paragraph";
-import ButtonSection from "./ButtonSection";
 import { useState } from "react";
 
 const AddonsItems = [
@@ -28,7 +27,7 @@ const AddonsItems = [
   },
 ];
 
-export default function Addons({ toggled, onToggled }) {
+export default function Addons({ toggled }) {
   return (
     <>
       <TopText>
@@ -37,12 +36,7 @@ export default function Addons({ toggled, onToggled }) {
       </TopText>
       <AddonsSection>
         {AddonsItems.map((Item) => (
-          <Addon
-            key={Item.id}
-            Item={Item}
-            toggled={toggled}
-            onToggled={onToggled}
-          />
+          <Addon key={Item.id} Item={Item} toggled={toggled} />
         ))}
       </AddonsSection>
     </>

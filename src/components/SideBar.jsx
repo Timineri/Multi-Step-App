@@ -54,6 +54,6 @@ const Numbers = styled.div`
 `;
 
 const Paragraph = styled.p`
-  color: hsl(231, 11%, 63%);
+  color: hsl(229, 24%, 87%);
   font-weight: 400;
 `;

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Header from "./Header";
 import Paragraph from "./Paragraph";
-import ButtonSection from "./ButtonSection";
 
 const SummaryItems = [
   {
